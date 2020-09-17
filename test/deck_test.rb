@@ -15,6 +15,24 @@ class DeckTest < Minitest::Test
     @deck = Deck.new(@cards)
   end
 
+  def test_it_exists
+    assert_instance_of Deck, @deck
+  end
+
+  def test_deck_initialized_with_cards
+    assert_equal [@card1, @card2, @card3], @deck.cards
+  end
+  
+  def test_it_can_return_count_of_cards
+    assert_equal 3, @deck.count
+  end
+
+  def test_it_can_return_cards_by_category
+    assert_equal [@card1, @card3], @deck.cards_in_category(:nature)
+    assert_equal [@card2], @deck.cards_in_category(:entertainment)
+    assert_equal [], @deck.cards_in_category(:food)
+  end
+  
   
 
   
